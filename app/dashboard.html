@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand">UFP. CA</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="#" class="nav-item nav-link"></a>
+                <a href="#" class="nav-item nav-link"></a>
+              	<a href="#" class="nav-item nav-link"></a>
+            </div>
+            <div class="navbar-nav ms-auto">              	
+                <a href="#" class="nav-item nav-link"></a>
+              	<a href="#" class="nav-item nav-link"></a>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="container">
+  	<div class="p-4 my-4 bg-light rounded-3">
+        <h1>Solicita tu prestamo</h1>
+        <p class="lead">Nuestra unidad financiera presta dinero con un interés de 16% para personas naturales y 18% jurídicas. <br> Es muy facil solicitarlo! <br>Solo debes llenar el siguiente formulario.</p>
+        <p><a href="../viewPrestamo.html" target="_blank" class="btn btn-success btn-lg">Solicitud de Prestamo</a></p>
+    </div>
+    <div class="row g-3">
+        <div class="col-md-6 col-lg-4 col-xl-3">
+            <h3>Solicitudes de Persona Natural</h3>
+            <h1 id="cuentaNatural"></h1>
+            
+        </div>
+        <div class="col-md-6 col-lg-4 col-xl-3">
+            <h2>Solicitudes de Persona Juridica</h2>
+            <h1 id="cuentaJuridica" ></h1>
+
+        </div>
+        <div class="col-md-6 col-lg-4 col-xl-3">
+            <h2>Natural vs Juridica</h2>
+            <canvas id="donaChart"></canvas><br><br>
+        </div>
+        <div class="col-md-6 col-lg-4 col-xl-3">
+            <h2>Bootstrap</h2>
+            <p>Bootstrap is a powerful front-end framework for faster and easier web development. Our Bootstrap tutorials will help you to learn all the features of latest Bootstrap 4 framework so that you can easily create responsive websites.</p>
+            <p><a href="https://www.tutorialrepublic.com/twitter-bootstrap-tutorial/" target="_blank" class="btn btn-success">Learn More &raquo;</a></p>
+           <!-- <p><a href="#" class="btn btn-success btn-lg" onclick="enviarCorreoElectronico()">Enviar Formulario</a></p> --> 
+
+        </div>
+    </div>
+    
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./controllers/dashboard.js">
+//Se esta llamando al controller
+</script>
+</body>
+</html>
