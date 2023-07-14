@@ -1,8 +1,12 @@
-using { db.creditRequests as db } from '../db/schema';
+using { db.creditRequests as db } from '../db/schema'; 
 
+service prestamoservice {
 
-service prestamoService {
+    entity prestamosrv as projection on db.RequestsPre;
+    function hello (to:String) returns String;
+    
+}
 
-    entity prestamoSrv as projection on db.RequestsPre;
-
+service say {
+  function hello (to:String) returns String;
 }

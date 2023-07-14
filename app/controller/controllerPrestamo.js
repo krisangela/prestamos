@@ -1,9 +1,10 @@
 window.addEventListener("load", loadData);
 HOST = window.location.host;
+const $form = document.querySelector('#item')
 
 function loadData(){
 
-    $.get("http://"+HOST+"/prestamo/prestamoSrv", (data, status) => {
+    $.get("http://"+HOST+"/prestamoservice/prestamosrv", (data, status) => {
         //console.log(data);
         cargarDataPrestamoget(data);
     });
@@ -14,7 +15,7 @@ function setSelection(aux,inten){
         case "Edit" :
             document.getElementById("tileModal").innerHTML = "Editar Solicitud de Prestamos";
             document.getElementById("btnTitleModal").innerHTML = "Editar Solicitud de Prestamos";
-            $.get("http://"+HOST+"/prestamo/prestamoSrv/"+aux.trim(), (data, status) => {
+            $.get("http://"+HOST+"/prestamoservice/prestamosrv/"+aux.trim(), (data, status) => {
                 setDataModal(data);
             });
             break;
@@ -74,7 +75,8 @@ function crearRegistro() {
     var tipoPersonaInput = document.getElementById("tipoPersona").value;
     var salarioMensualInput = document.getElementById("salarioMensual").value;
     var montoPrestamoInput = document.getElementById("montoPrestamo").value;
-
+    var montoPrestamo = parseFloat(montoPrestamoInput);
+    
     var obj = {
         "nombre" : nombreInput,
         "apellido" : apellidoInput,
@@ -97,13 +99,13 @@ async function RequestJSON(method, data, callBack) {
     var endPoint = "";
     switch (method) {
         case "PUT":
-            endPoint = "http://" + HOST + "/prestamo/prestamoSrv/" + data.ID.trim();
+            endPoint = "http://" + HOST + "/prestamoservice/prestamosrv/" + data.ID.trim();
             break;
         case "DELETE":
-            endPoint = "http://" + HOST + "/prestamo/prestamoSrv/" + data.ID.trim();
+            endPoint = "http://" + HOST + "/prestamoservice/prestamosrv/" + data.ID.trim();
             break;
         default:
-            endPoint = "http://"+HOST+"/prestamo/prestamoSrv";
+            endPoint = "http://"+HOST+"/prestamoservice/prestamosrv";
             break;
     }
 
