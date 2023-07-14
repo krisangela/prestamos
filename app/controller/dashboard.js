@@ -6,7 +6,7 @@ var conteoJuridica = "";
 function loadData() {
   //trae la data del servicio con un get
   $.get(
-    "http://" + HOST + "/prestamo/prestamoSrv",
+    "http://" + HOST + "/prestamoservice/prestamosrv",
     (data, status) => {
        // console.log("kacm "+data);
         contarTipoPersona(data);
