@@ -1,11 +1,11 @@
-const { Service } = require('sap-cds');
-const nodemailer = require('nodemailer');
+//const { Service } = require('sap-cds');
+//const nodemailer = require('nodemailer');
 
 module.exports = class say {
-    hello(req) { console.log('Entro'); return `Hello ${req.data.to}!` }
+    hello(req) {  return `Hello ${req.data.to}!` }
 }
 
-module.exports = srv => {
+/*module.exports = srv => {
   srv.on('sendEmail', async (req) => {
     const { to, subject, text } = req.data;
 
@@ -30,7 +30,7 @@ module.exports = srv => {
       /*from: 'tu_correo@gmail.com',
       to: to,
       subject: subject,
-      text: text*/
+      text: text
     };
 
     // Enviar el correo electrónico
@@ -38,4 +38,4 @@ module.exports = srv => {
 
     return `Correo electrónico enviado: ${info.response}`;
   });
-};
+};*/
