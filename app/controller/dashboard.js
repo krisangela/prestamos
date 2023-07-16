@@ -47,7 +47,7 @@ function dona() {
 
   // Configura los datos del gráfico
   var datos = {
-    labels: ["Persona Natural", "Persona Juridica"],
+    labels: ["Persona Natural", "Persona Jurídica"],
     datasets: [
       {
         data: [conteoNatural, conteoJuridica],
