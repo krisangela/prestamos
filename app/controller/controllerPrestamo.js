@@ -1,10 +1,12 @@
 window.addEventListener("load", loadData);
 HOST = window.location.host;
+var dataCompleta = '';
 
 function loadData(){
 
     $.get("http://"+HOST+"/prestamoservice/prestamosrv", (data, status) => {
         //console.log(data);
+        dataCompleta = data;
         cargarDataPrestamoget(data);
     });
 }
@@ -75,8 +77,17 @@ function crearRegistro() {
     var salarioMensualInput = document.getElementById("salarioMensual").value;
     var montoPrestamoInput = document.getElementById("montoPrestamo").value;
     var montoPrestamo = parseFloat(montoPrestamoInput);
+    var estatus = '';
+    let isNewRecord = true;
 
-    if (montoPrestamo <= 2000){
+    dataCompleta.value.forEach(element => {
+        if (element.dni == DniInput){
+            isNewRecord = false;
+        }
+    });
+
+    if (montoPrestamo <= 2000 && isNewRecord==true){
+        estatus = "Aprobado";
         RequestJSON("GET", {"email":EmailInput}, function(res){
             console.log("SE envio el correo");
             var modal = document.getElementById("miModal");
@@ -84,7 +95,17 @@ function crearRegistro() {
             document.getElementById("cerrarModalInfo").click();
             miModal.show();
         });
-    }else{
+    }else if(montoPrestamo <= 2000 && isNewRecord==false){
+        var modal = document.getElementById("miModal3");
+        var miModal = new bootstrap.Modal(modal);
+        document.getElementById("cerrarModalInfo3").click();
+        document.getElementById("cerrarModal").click();
+        miModal.show();
+        return;
+    }
+    else{
+        estatus = "Pendiente";
+        alert("pendiente");
         var modal = document.getElementById("miModal2");
         var miModal = new bootstrap.Modal(modal);
         document.getElementById("cerrarModalInfo2").click();
@@ -98,7 +119,8 @@ function crearRegistro() {
         "email" : EmailInput,
         "tipoPersona" : tipoPersonaInput,
         "salarioMensual" : parseFloat(salarioMensualInput),
-        "montoPrestamo"  : parseFloat(montoPrestamoInput)
+        "montoPrestamo"  : parseFloat(montoPrestamoInput),
+        "estatus": estatus
     }
 
     RequestJSON("POST",obj, function(res){
