@@ -1,5 +1,15 @@
 # Getting Started
 
+
+Siempre comenzar con estos comandos
+
+npm add sqlite3 -D	
+npm install -g @sap/cds-dk	  Para poder usar los comandos cds
+npm install
+cds deploy --to sqlite:prestamo.db	se crea y/o actualizar tabla de base de datos
+
+
+
 Welcome to your new project.
 
 It contains these folders and files, following our recommended project layout:
