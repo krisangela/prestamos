@@ -1,6 +1,5 @@
 window.addEventListener("load", loadData);
 HOST = window.location.host;
-const $form = document.querySelector('#item')
 
 function loadData(){
 
@@ -76,6 +75,21 @@ function crearRegistro() {
     var salarioMensualInput = document.getElementById("salarioMensual").value;
     var montoPrestamoInput = document.getElementById("montoPrestamo").value;
     var montoPrestamo = parseFloat(montoPrestamoInput);
+
+    if (montoPrestamo <= 2000){
+        RequestJSON("GET", {"email":EmailInput}, function(res){
+            console.log("SE envio el correo");
+            var modal = document.getElementById("miModal");
+            var miModal = new bootstrap.Modal(modal);
+            document.getElementById("cerrarModalInfo").click();
+            miModal.show();
+        });
+    }else{
+        var modal = document.getElementById("miModal2");
+        var miModal = new bootstrap.Modal(modal);
+        document.getElementById("cerrarModalInfo2").click();
+        miModal.show();
+    }
     
     var obj = {
         "nombre" : nombreInput,
@@ -90,10 +104,9 @@ function crearRegistro() {
     RequestJSON("POST",obj, function(res){
         loadData();
         document.getElementById("cerrarModal").click();
-    });
+    }); 
     
 }
-
 
 async function RequestJSON(method, data, callBack) {
     var endPoint = "";
@@ -104,19 +117,35 @@ async function RequestJSON(method, data, callBack) {
         case "DELETE":
             endPoint = "http://" + HOST + "/prestamoservice/prestamosrv/" + data.ID.trim();
             break;
+        case "GET":
+            console.log(data.email.trim());
+            endPoint = "http://" + HOST + "/prestamoservice/sendMail(to='" + data.email.trim() + "')";
+            break;
         default:
             endPoint = "http://"+HOST+"/prestamoservice/prestamosrv";
             break;
     }
 
+
     try{
-        const response = await fetch(endPoint, {
-            method: method,
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        });
+
+        if (method === "GET") {
+            const response = await fetch(endPoint, {
+                method: method,
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+        } else {
+            const response = await fetch(endPoint, {
+                method: method,
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+        }
+        
 
         const result = await response.json();
         callBack();
