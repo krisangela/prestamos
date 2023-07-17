@@ -9,4 +9,5 @@ entity RequestsPre : cuid,managed {
     tipoPersona     : String(255); 
     salarioMensual  : Decimal(34,2);
     montoPrestamo   : Decimal(34,2);
+    estatus        : String(255);
 }
