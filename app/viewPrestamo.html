@@ -167,7 +167,7 @@
                         
                         <div class="search-box">
                             <i class="material-icons">&#xE8B6;</i>
-                            <input id="busqueda" onkeyup="filtroAutosGet('Busqueda',this.value)" type="text" class="form-control" placeholder="Search&hellip;">
+                            <input id="busqueda" onkeyup="filtroPrestamosGet('Busqueda',this.value)" type="text" class="form-control" placeholder="Search&hellip;">
                         </div>
                     </div>
                 </div>
@@ -175,11 +175,11 @@
             <table class="table table-striped table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th>Nombre <i class="fa fa-sort"></i></th>
-                        <th>Apellido <i class="fa fa-sort"></i></th>
-                        <th>DNI<i class="fa fa-sort"></i></th>
-                        <th>Email<i class="fa fa-sort"></i></th>
-                        <th>Tipo Persona</th>
+                        <th>Nombre</i></th>
+                        <th>Apellido</i></th>
+                        <th onclick="filtroPrestamosGet('DNI','')">DNI <i class="fa fa-sort"></i></th>
+                        <th>Email</th>
+                        <th onclick="filtroPrestamosGet('tipoPersona','')">Tipo Persona <i class="fa fa-sort"></i></th>
                         <th>Salario mensual</th>
                         <th>Préstamo</th>
                         <th>Acción</th>

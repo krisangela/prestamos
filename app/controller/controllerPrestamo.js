@@ -29,6 +29,29 @@ function setSelection(aux,inten){
     }
 }
 
+function filtroPrestamosGet(value,busq){
+    switch (value ? value : ""){
+        case "DNI":
+            $.get("http://"+HOST+"/prestamoservice/prestamosrv?$orderby=dni", callBack);
+            break;
+        case "DNI":
+            $.get("http://"+HOST+"/prestamoservice/prestamosrv?$orderby=tipoPersona", callBack);
+            break;
+        case "Busqueda":
+            $.get(
+                "http://"+HOST+"/prestamoservice/prestamosrv?$search="+busq.trim(), callBack);
+            break;
+        default:
+            $.get("http://"+HOST+"/prestamoservice/prestamosrv", callBack);
+            break;
+    }
+}
+
+function callBack (data, status) {
+    cargarDataPrestamoget(data);
+}
+
+
 function deleteConfirm(id, method, nombre, apellido) {
     
     msg = "Estas seguro que quieres eliminar el registro de: " + nombre + " " + apellido;
